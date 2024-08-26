@@ -18,6 +18,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
     args: {
-       
+       links: [{
+        title: "Inicio",
+        href: "/"
+       },
+         {
+          title: "Explorar",
+          href: "/explorar"
+         },
+         {
+          title: "Perfil",
+          href: "/mi-perfil"
+         }
+    ]
     }
 }
