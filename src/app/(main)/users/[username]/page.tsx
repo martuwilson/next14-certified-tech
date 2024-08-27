@@ -1,7 +1,9 @@
 import Message from '@/components/messages/Message';
 import UserTabs from '@/components/users/UserTabs';
+import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
+import profilePic from '../../../../../public/anakin.jpg'
 
 const UserPage = ({params}: {params: {username: string}}) => {
 
@@ -37,8 +39,16 @@ const UserPage = ({params}: {params: {username: string}}) => {
   return (
     <main className="flex flex-col bg-gray-100 p-8">
       <section className="flex flex-col mb-8">
-        <div className="rounded-full p-6 bg-gray-300 w-20 text-center mb-5">
-          <span className="font-semibold text-lg">AS</span>
+        <div className="rounded-full text-center mb-4 block relative w-20 h-20">
+          <Image
+          src={profilePic}
+          alt="Profile Picture"
+          className="rounded-full"
+          fill
+          /* se puede hacer con width y height sin necesidad del block, relative, etc */
+          priority
+          placeholder='blur'
+          />
         </div>
         <h2 className='mb-1'>{user.name}</h2>
         <div className="text-md mb-4 text-gray-600 cursor-pointer">
