@@ -20,7 +20,7 @@ const Menu = ({links}: MenuProps) => {
             ))
           }
         </ul>
-        <button className="btn-primary">
+        <button className="btn-primary uppercase font-semibold">
           Postear
         </button>
     </nav>

@@ -25,9 +25,7 @@ export default function RootLayout({
       }
     >
       <body>
-        <h1 >
-          OTRO Title con otro font
-        </h1>
+        
         {children}
       </body>
     </html>
