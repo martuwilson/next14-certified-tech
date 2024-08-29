@@ -8,26 +8,28 @@ type MessageProps = {
 
 const Message = ({message}: MessageProps) => {
   return (
-    <div className="flex">
-      <div className="rounded-full p-5 bg-gray-300 w-16 text-center mb-5">
-        <span className="font-semibold text-sm">AS</span>
-      </div>
-      <div className="flex flex-col ml-4 mt-2">
+    <div className="grid grid-cols-12">
+      <div className="w-full mt-1 text-center mb-4 block relative col-span-2 h-20 col-span-3 flex items-center justify-center">
+          <Image
+          src={message.user.photoUrl}
+          alt="Profile Picture"
+          className="rounded-full"
+          width={60}
+          height={60}
+          /* se puede hacer con width y height sin necesidad del block, relative, etc */
+          priority
+          blurDataURL={message.user.photoUrl}
+          placeholder='blur'
+          />
+        </div>
+      <div className="flex flex-col ml-4 mt-2 col-span-10">
         <div className="flex">
-          <h3>{message.name}</h3>
+          <h3>{message.user.name}</h3>
           <div className="text-md ml-2 text-gray-600 cursor-pointer">
-            @<Link href={`/users/${message.username}`}>{message.username}</Link>
+            @<Link href={`/users/${message.user.username}`}>{message.user.username}</Link>
           </div>
         </div>
         <p>{message.message}</p>
-        <div>
-          <Image
-            src="https://images.unsplash.com/photo-1723754165998-305df32c501e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw4fHx8ZW58MHx8fHx8"
-            alt="Profile Picture"
-            width={300}
-            height={300}
-          />
-        </div>
       </div>
     </div>
   );

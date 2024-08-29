@@ -3,23 +3,29 @@ import UserTabs from '@/components/users/UserTabs';
 import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
-import { UserType } from '@/types/user.types';
-
-
-const getUserData = async (username: string): Promise<UserType> => {
-  const response = await fetch(`http://localhost:8080/api/public/users/${username}`);
-
-  if(!response.ok) {
-    throw new Error('An error occurred while fetching the data');
-  }
-
-  return await response.json();
-}
+import { getUserData, getUserMessages, getUserMessagesReplies } from '@/services/api.service';
 
 
 const UserPage = async ({params}: {params: {username: string}}) => {
 
-  const user = await getUserData(params.username);
+  const userPromise =  getUserData(params.username);
+  const userMessagesPromise =  getUserMessages(params.username);
+  const userRepliesPromise =  getUserMessagesReplies(params.username);
+
+  const [
+    user,
+    userMessages,
+    userReplies
+  ] = await Promise.all([
+    userPromise,
+    userMessagesPromise,
+    userRepliesPromise
+  ]);
+  /*
+  Promise.all --> con esto en lugar de en cada const que llame a la api, poner un await,
+  espera la ejecucion de todas las promeses que se hacen a la vez y devuelve un array con los resultados.
+  Se gana performance
+  */
 
 
   return (
@@ -55,7 +61,7 @@ const UserPage = async ({params}: {params: {username: string}}) => {
           </div>
         </div>
       </section>
-      <UserTabs messages={[]} replies={[]} />
+      <UserTabs messages={userMessages.content} replies={userReplies.content} />
     </main>
   );
 }
