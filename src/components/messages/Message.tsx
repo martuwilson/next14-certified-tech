@@ -9,7 +9,7 @@ type MessageProps = {
 const Message = ({message}: MessageProps) => {
   return (
     <div className="grid grid-cols-12">
-      <div className="w-full mt-1 text-center mb-4 block relative col-span-2 h-20 col-span-3 flex items-center justify-center">
+      <div className="w-full mt-1 text-center mb-4 block relative col-span-2 h-20 flex items-center justify-center">
           <Image
           src={message.user.photoUrl}
           alt="Profile Picture"
