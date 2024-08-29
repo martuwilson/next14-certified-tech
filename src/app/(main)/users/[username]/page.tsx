@@ -3,50 +3,37 @@ import UserTabs from '@/components/users/UserTabs';
 import Image from 'next/image';
 import Link from 'next/link'
 import React from 'react'
-import profilePic from '../../../../../public/anakin.jpg'
+import { UserType } from '@/types/user.types';
 
-const UserPage = ({params}: {params: {username: string}}) => {
 
-  const user = {
-    username: params.username,
-    name: 'Anakin Skywalker',
-    bio: 'Im from Tatooine, I like to podrace and I am a Jedi Knight. I am the father of Luke Skywalker and Leia Organa.',
-    followersCount: 15,
-    followingCount: 3,
-    messages: [
-      { name: 'Anakin Skywalker',
-        username: 'Anakin',
-        message: 'Segundo Mensaje',
-        repliesCount: 5
-      },
-      {
-        name: 'Anakin Skywalker',
-        username: 'Anakin',
-        message: 'Primer Mensaje',
-        repliesCount: 3
-      }
-    ],
-    replies: [
-      {
-        name: 'Anakin Skywalker',
-        username: 'Anakin',
-        message: 'Segundo Respuesta',
-        repliesCount: 5
-      },
-    ]
+const getUserData = async (username: string): Promise<UserType> => {
+  const response = await fetch(`http://localhost:8080/api/public/users/${username}`);
+
+  if(!response.ok) {
+    throw new Error('An error occurred while fetching the data');
   }
+
+  return await response.json();
+}
+
+
+const UserPage = async ({params}: {params: {username: string}}) => {
+
+  const user = await getUserData(params.username);
+
 
   return (
     <main className="flex flex-col bg-gray-100 p-8">
       <section className="flex flex-col mb-8">
         <div className="rounded-full text-center mb-4 block relative w-20 h-20">
           <Image
-          src={profilePic}
+          src={user.photoUrl}
           alt="Profile Picture"
           className="rounded-full"
           fill
           /* se puede hacer con width y height sin necesidad del block, relative, etc */
           priority
+          blurDataURL={user.photoUrl}
           placeholder='blur'
           />
         </div>
@@ -68,7 +55,7 @@ const UserPage = ({params}: {params: {username: string}}) => {
           </div>
         </div>
       </section>
-      <UserTabs messages={user.messages} replies={user.replies} />
+      <UserTabs messages={[]} replies={[]} />
     </main>
   );
 }
