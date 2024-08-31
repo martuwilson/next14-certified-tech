@@ -32,7 +32,7 @@ const ExploreUsers = ({ users }: ExploreUsersProps) => {
 
                 {
                     users && users.length > 4 &&
-                    <Link href={`/explorar?type=hash`}>
+                    <Link href={`/explore?type=USERS`}>
                         <div className="text-center link-primary">
                             Ver más
                         </div>

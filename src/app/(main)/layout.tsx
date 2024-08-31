@@ -2,7 +2,6 @@ import ExploreTrending from '@/components/explore/ExploreTrending';
 import ExploreUsers from '@/components/explore/ExploreUsers';
 import Menu from '@/components/menu/Menu';
 import exploreApi from '@/services/explore/explore.service';
-import Link from 'next/link'
 import React, { FC, PropsWithChildren } from 'react'
 
 const LINKS = [{
@@ -11,7 +10,7 @@ const LINKS = [{
 },
 {
   title: "Explorar",
-  href: "/explorar"
+  href: "/explore"
 },
 {
   title: "Perfil",
