@@ -7,6 +7,9 @@ const FaqPage = () => {
         <>
             <main>
                 <FAQSection />
+                <section className='flex flex-col'>
+                    <h2>Seccion 1</h2>
+                </section>
             </main>
 
         </>
