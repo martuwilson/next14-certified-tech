@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Mulish, Alegreya } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import Navbar from "@/components/layout/Navbar";
 
 const mulish = Mulish({ subsets: ["latin"], variable: '--font-mulish' });
 const alegreya = Alegreya({
@@ -26,15 +27,7 @@ export default function RootLayout({
       }
     >
       <body>
-        <header>
-          <nav>
-            <div>
-              <Link href="/explore">
-                LOGO
-              </Link>
-            </div>
-          </nav>
-        </header>
+        <Navbar />
 
 
         {children}
