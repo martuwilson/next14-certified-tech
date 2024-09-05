@@ -1,7 +1,6 @@
 import FAQCard from '@/components/faq/FAQCard'
 import FAQSection from '@/components/faq/FAQSection'
 import faqsApi from '@/services/faqs/faqs.service';
-import React from 'react'
 
 const FaqPage = async() => {
 
