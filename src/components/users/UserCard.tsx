@@ -39,8 +39,7 @@ const UserCard = ({ user, layout, children }: UserCardProps) => {
                         height={60}
                         /* se puede hacer con width y height sin necesidad del block, relative, etc */
                         priority
-                        blurDataURL={user.photoUrl}
-                        placeholder='blur'
+                       
                     />
                 </div>
                 <div className="flex flex-col ml-4 mt-2 col-span-10">
