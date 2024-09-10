@@ -1,7 +1,6 @@
 import { PageType } from "@/types/pagination.types";
 import { TrendingUserType, UserType } from "../../types/user.types";
 import { httpGetPublic } from "../common/http.service";
-import { URLSearchParams } from 'url';
 import { TrendingHashtag } from "@/types/hash.types";
 
 class ExploreApi {

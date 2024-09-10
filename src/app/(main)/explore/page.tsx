@@ -7,7 +7,7 @@ const ExplorePage = async({searchParams}: {searchParams?:{[key: string]: string 
 
   
   const hashesPromise = exploreApi.getTrendingHashtags(0, 20)
-  const usersPromise = exploreApi.getFollowRecommendations(0, 20)
+  const usersPromise = exploreApi.getFollowRecommendations(0,5)
  
   const [
     hashes,
@@ -20,7 +20,7 @@ const ExplorePage = async({searchParams}: {searchParams?:{[key: string]: string 
       <section className="flex flex-col mb-8">
         <ExploreTabs
           hashtags={hashes.content}
-          users={users.content}
+          users={users}
           initialTab={searchParams?.type === 'USERS' ? 'USERS' : 'HASHTAGS'}
         />
       </section>
