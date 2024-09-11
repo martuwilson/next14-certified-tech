@@ -10,6 +10,7 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import UserList from '../users/UserList';
 import { PageType } from '@/types/pagination.types';
+import MessageHashtagList from '../messages/MessageHashtagList';
 
 
 enum TabView {
@@ -18,7 +19,7 @@ enum TabView {
 }
 
 type ExploreTabsProps = {
-  hashtags: TrendingHashtag[],
+  hashtags: PageType<TrendingHashtag>,
   users: PageType<TrendingUserType>,
   initialTab?: string
 }
@@ -52,9 +53,7 @@ const ExploreTabs = ({ hashtags, users, initialTab }: ExploreTabsProps) => {
       </div>
 
       <div>
-        {tab === TabView.HASHTAGS && hashtags.map((hash, index) => (
-          <MessageHashtag hash={hash} key={`hash-explore-${index}`} />
-        ))}
+        {tab === TabView.HASHTAGS && <MessageHashtagList initialPage={hashtags} />}
         {tab === TabView.USERS && <UserList initialUserPage={users} />}
       </div>
     </>
