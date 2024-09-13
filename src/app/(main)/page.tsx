@@ -6,6 +6,7 @@ import messagesApi from '@/services/messages/messages.service'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import MessageFedd from '@/components/messages/MessageFeed'
 import MessageFeed from '@/components/messages/MessageFeed'
+import MessagePostForm from '@/components/messages/MessagePostForm'
 
 const IndexPage = async () => {
 
@@ -16,7 +17,7 @@ const IndexPage = async () => {
     <>
       <main className="flex flex-col bg-gray-100 p-8">
         <section className="flex flex-col mb-8">
-
+          <MessagePostForm />
           <MessageFeed initialMessages={messagesResponse} />
 
         </section>
